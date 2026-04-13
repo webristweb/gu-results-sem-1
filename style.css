@@ -1,0 +1,1468 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #000000;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Mobile Menu Overlay */
+.menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.menu-overlay.active {
+    display: block !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+/* Top Bar */
+.top-bar {
+    background: #b71c1c;
+    color: white;
+    padding: 12px 0;
+    font-size: 14px;
+}
+
+.container-fluid {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+.top-bar-left {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.icon-phone, .icon-time, .icon-email {
+    font-size: 16px;
+}
+
+/* Main Header */
+.header {
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+}
+
+.university-logo {
+    height: 65px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* Hamburger Menu Button (Hidden on Desktop) */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+    border-radius: 6px;
+    transition: background 0.3s;
+    position: relative;
+}
+
+.hamburger-menu:hover {
+    background: #f5f5f5;
+}
+
+.hamburger-menu:active {
+    background: #e0e0e0;
+}
+
+.hamburger-menu span {
+    width: 26px;
+    height: 2.5px;
+    background: #333;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.hamburger-menu.active span:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px);
+    background: #b71c1c;
+}
+
+.hamburger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+    background: #b71c1c;
+}
+
+/* Navigation */
+.main-nav {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.nav-link {
+    color: #333;
+    text-decoration: none;
+    padding: 12px 22px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: all 0.3s;
+    position: relative;
+    letter-spacing: 0.3px;
+}
+
+.nav-link:hover {
+    background: #f5f5f5;
+    color: #b71c1c;
+    transform: translateY(-1px);
+}
+
+.nav-link.active {
+    background: #b71c1c;
+    color: white;
+}
+
+.main-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.result-card {
+    background: #000000;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    width: 100%;
+    max-width: 950px;
+    overflow: hidden;
+    border: 2px solid #00ffff;
+}
+
+.card-header {
+    background: #000000;
+    color: #00ffff;
+    padding: 40px 40px 30px 40px;
+    text-align: center;
+    border-radius: 20px 20px 0 0;
+    position: relative;
+    border-bottom: 3px solid #00ffff;
+}
+
+.card-header h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #00ffff;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    position: relative;
+    z-index: 1;
+}
+
+.session {
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 8px;
+    letter-spacing: 1px;
+    color: #ffffff;
+    position: relative;
+    z-index: 1;
+}
+
+.card-header h2 {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.session {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.search-section {
+    padding: 45px 50px;
+    background: #000000;
+}
+
+.form-group {
+    margin-bottom: 30px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #00ffff;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 16px 20px;
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: all 0.3s;
+    background: #ffffff;
+    color: #000000;
+    font-weight: 500;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #00ffff;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    background: white;
+}
+
+.form-group input::placeholder {
+    color: #999999;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, #ff0080 0%, #ff0040 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 5px 20px rgba(255, 0, 128, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 0, 128, 0.6);
+    background: linear-gradient(135deg, #ff0040 0%, #ff0080 100%);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    padding: 10px 25px;
+    background: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+}
+
+.btn-print {
+    padding: 8px 20px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-print:hover {
+    background: #218838;
+}
+
+.info-text {
+    text-align: center;
+    color: #999999;
+    font-size: 14px;
+    margin-top: 20px;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.result-section {
+    padding: 30px;
+    background: #f5f5f5;
+}
+
+/* Grade Card Styling */
+.grade-card {
+    background: white;
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 0;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    border: 2px solid #e0e0e0;
+    border-radius: 2px;
+}
+
+/* Header Section */
+.card-header-section {
+    text-align: center;
+    margin-bottom: 25px;
+    padding: 25px 0;
+    padding-bottom: 25px;
+    border-bottom: 4px solid #c41e3a;
+    background: linear-gradient(to bottom, #ffffff 0%, #fafafa 100%);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.header-center {
+    text-align: center;
+}
+
+.content-wrapper {
+    padding: 0 40px 30px 40px;
+}
+
+.main-logo {
+    height: 140px;
+    margin-bottom: 12px;
+    max-width: 100%;
+    object-fit: contain;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    filter: contrast(1.1) brightness(1.02);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.university-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #c41e3a;
+    margin: 8px 0;
+    letter-spacing: 1px;
+}
+
+.university-address {
+    font-size: 13px;
+    color: #2c2c2c;
+    margin: 10px 0;
+    line-height: 1.6;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+.university-contact {
+    font-size: 12px;
+    color: #555;
+    margin: 8px 0;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+}
+
+/* Grade Card Title */
+.grade-card-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: #000;
+    margin: 25px 0 20px 0;
+    padding: 0 40px;
+}
+
+/* Floating Print Button */
+.floating-print-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(40, 167, 69, 0.4);
+    transition: all 0.3s;
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.floating-print-btn.show {
+    display: flex;
+}
+
+.floating-print-btn:hover {
+    transform: scale(1.1) translateY(-3px);
+    box-shadow: 0 6px 25px rgba(40, 167, 69, 0.5);
+    background: linear-gradient(135deg, #20c997 0%, #28a745 100%);
+}
+
+.floating-print-btn:active {
+    transform: scale(0.95);
+}
+
+/* Student Info Table */
+.student-info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    border: 2px solid #000;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.student-info-table tr {
+    border-bottom: 1px solid #000;
+}
+
+.student-info-table tr:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #000;
+    padding: 10px 12px;
+    background: #f5f5f5;
+    border-right: 1px solid #000;
+    width: 18%;
+}
+
+.info-value {
+    font-size: 12px;
+    color: #000;
+    padding: 10px 12px;
+    border-right: 1px solid #000;
+    font-weight: 500;
+}
+
+.info-value:last-child {
+    border-right: none;
+}
+
+/* Course Table */
+.course-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    border: 2px solid #000;
+}
+
+.course-table thead {
+    background: #f0f0f0;
+}
+
+.course-table th {
+    font-size: 12px;
+    font-weight: 700;
+    color: #000;
+    padding: 14px 10px;
+    text-align: center;
+    border: 1px solid #000;
+}
+
+.course-table tbody tr {
+    border-bottom: 1px solid #000;
+}
+
+.course-table td {
+    font-size: 12px;
+    color: #000;
+    padding: 10px;
+    text-align: center;
+    border-right: 1px solid #000;
+    font-weight: 500;
+}
+
+.course-table td:first-child {
+    text-align: left;
+    font-weight: 600;
+}
+
+.course-table td:nth-child(2) {
+    text-align: left;
+}
+
+.course-table td:last-child {
+    border-right: none;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+/* Summary Info Table */
+.summary-info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    border: 2px solid #000;
+}
+
+.summary-info-table tr {
+    border-bottom: 1px solid #000;
+}
+
+.summary-info-table tr:last-child {
+    border-bottom: none;
+}
+
+.summary-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: #000;
+    padding: 10px 8px;
+    text-align: center;
+    border-right: 1px solid #000;
+    background: #f5f5f5;
+}
+
+.summary-label:last-child {
+    border-right: none;
+}
+
+.summary-value {
+    font-size: 11px;
+    font-weight: 600;
+    color: #000;
+    padding: 10px 8px;
+    text-align: center;
+    border-right: 1px solid #000;
+}
+
+.summary-value:last-child {
+    border-right: none;
+}
+
+/* Date Section */
+.date-section {
+    margin: 30px 0 20px 0;
+    padding: 0 40px;
+}
+
+.date-section p {
+    font-size: 13px;
+    font-weight: 600;
+    color: #000;
+}
+
+/* Back Button */
+.back-btn-section {
+    text-align: center;
+    margin: 30px 0;
+    padding: 20px 0;
+}
+
+.back-btn {
+    padding: 12px 30px;
+    background: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.back-btn:hover {
+    background: #5a6268;
+    transform: translateY(-2px);
+}
+
+.footer {
+    background: #000000;
+    color: white;
+    text-align: center;
+    padding: 25px 15px;
+    font-size: 14px;
+    border-top: 3px solid #00ffff;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.5), transparent);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.copyright {
+    margin-bottom: 20px;
+    font-size: 13px;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+/* Developer Profile Card */
+.developer-card {
+    background: rgba(0, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 20px;
+    margin: 20px auto 0;
+    max-width: 500px;
+    border: 2px solid #00ffff;
+    box-shadow: 0 8px 32px rgba(0, 255, 255, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.developer-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0, 255, 255, 0.4);
+    border-color: #00ffff;
+}
+
+.developer-profile {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    text-align: left;
+}
+
+.developer-photo {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #00ffff;
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: block;
+    flex-shrink: 0;
+}
+
+.developer-photo[src=""],
+.developer-photo:not([src]) {
+    display: none;
+}
+
+.developer-card:hover .developer-photo {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 255, 255, 0.7);
+}
+
+.developer-info {
+    flex: 1;
+}
+
+.developer-name {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: #00ffff;
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.developer-title {
+    font-size: 13px;
+    color: #ffffff;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.developer-tagline {
+    font-size: 12px;
+    color: #ff0080;
+    font-style: italic;
+    margin: 0;
+    font-weight: 600;
+}
+
+@media print {
+    .footer {
+        display: none !important;
+    }
+}
+
+@media print {
+    body {
+        background: white;
+    }
+    
+    .top-bar, .header, .footer, .back-btn-section, .floating-print-btn {
+        display: none !important;
+    }
+    
+    .main-container {
+        padding: 0;
+        background: white;
+    }
+    
+    .result-section {
+        background: white;
+        padding: 0;
+    }
+    
+    .grade-card {
+        box-shadow: none;
+        page-break-inside: avoid;
+        border: none;
+        max-width: 100%;
+    }
+    
+    .card-header-section {
+        border-bottom: 2px solid #333;
+        page-break-after: avoid;
+    }
+    
+    .content-wrapper {
+        page-break-inside: avoid;
+    }
+    
+    * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
+
+@media (max-width: 1024px) {
+    .container-fluid {
+        padding: 0 20px;
+    }
+    
+    .result-card {
+        max-width: 100%;
+    }
+    
+    .grade-card {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .top-bar {
+        font-size: 11px;
+        padding: 10px 0;
+    }
+    
+    .container-fluid {
+        padding: 0 12px;
+    }
+    
+    .top-bar-left {
+        flex-direction: column;
+        gap: 6px;
+        align-items: flex-start;
+    }
+    
+    .contact-item {
+        font-size: 11px;
+        line-height: 1.5;
+    }
+    
+    .header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    
+    .header-wrapper {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 0;
+        padding: 10px 0;
+        align-items: center;
+        position: relative;
+    }
+    
+    .logo-section {
+        flex: 0 0 auto;
+    }
+    
+    .university-logo {
+        height: 48px;
+    }
+    
+    /* Show Hamburger Menu on Mobile */
+    .hamburger-menu {
+        display: flex !important;
+        position: relative;
+        z-index: 1002;
+        background: white;
+        border: 1px solid #ddd;
+        padding: 8px;
+        border-radius: 4px;
+    }
+    
+    .hamburger-menu span {
+        background: #333 !important;
+    }
+    
+    /* Hide desktop navigation on mobile */
+    .main-nav {
+        display: flex;
+    }
+    
+    /* Mobile Navigation */
+    .main-nav {
+        position: fixed !important;
+        top: 0 !important;
+        right: -100% !important;
+        width: 75% !important;
+        max-width: 280px !important;
+        height: 100vh !important;
+        background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%) !important;
+        flex-direction: column !important;
+        gap: 0 !important;
+        padding: 70px 0 20px 0 !important;
+        box-shadow: -3px 0 15px rgba(0,0,0,0.2) !important;
+        transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        z-index: 1001 !important;
+        overflow-y: auto !important;
+    }
+    
+    .main-nav.active {
+        right: 0 !important;
+    }
+    
+    .nav-link {
+        width: 100% !important;
+        padding: 16px 20px !important;
+        font-size: 15px !important;
+        font-weight: 600 !important;
+        text-align: left !important;
+        border-radius: 0 !important;
+        border-bottom: 1px solid #e8e8e8 !important;
+        min-width: auto !important;
+        color: #2c3e50 !important;
+        position: relative;
+        transition: all 0.2s;
+        display: block !important;
+    }
+    
+    .nav-link::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 4px;
+        background: #b71c1c;
+        transform: scaleY(0);
+        transition: transform 0.2s;
+    }
+    
+    .nav-link:hover {
+        background: #f0f4f8;
+        transform: none;
+        padding-left: 24px;
+    }
+    
+    .nav-link:hover::before {
+        transform: scaleY(1);
+    }
+    
+    .nav-link:active {
+        background: #e3e9f0;
+    }
+    
+    .main-container {
+        padding: 10px 8px;
+    }
+    
+    .result-card {
+        border-radius: 15px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        border: 2px solid #00ffff;
+    }
+    
+    .card-header {
+        padding: 20px 15px;
+        border-radius: 15px 15px 0 0;
+        background: #000000;
+        border-bottom: 3px solid #00ffff;
+    }
+    
+    .card-header h2 {
+        font-size: 20px;
+        line-height: 1.2;
+        font-weight: 700;
+        color: #00ffff;
+        text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    }
+    
+    .session {
+        font-size: 13px;
+        margin-top: 5px;
+        color: #ffffff;
+    }
+    
+    .search-section {
+        padding: 20px 15px;
+        background: #000000;
+    }
+    
+    .form-group {
+        margin-bottom: 18px;
+    }
+    
+    .form-group label {
+        font-size: 15px;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #00ffff;
+    }
+    
+    .form-group input {
+        padding: 14px 16px;
+        font-size: 15px;
+        border: 2px solid #ffffff;
+        border-radius: 8px;
+        background: #ffffff;
+        color: #000000;
+    }
+    
+    .form-group input:focus {
+        border-color: #00ffff;
+        box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    }
+    
+    .btn-primary {
+        padding: 14px;
+        font-size: 17px;
+        font-weight: 700;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #ff0080 0%, #ff0040 100%);
+        box-shadow: 0 5px 20px rgba(255, 0, 128, 0.4);
+    }
+    
+    .btn-primary:active {
+        transform: translateY(1px);
+    }
+    
+    .info-text {
+        font-size: 11px;
+        margin-top: 12px;
+        color: #999999;
+    }
+    
+    .result-section {
+        padding: 18px 12px;
+    }
+    
+    .grade-card {
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+    
+    .card-header-section {
+        padding: 15px 0;
+        margin-bottom: 18px;
+    }
+    
+    .main-logo {
+        height: 85px;
+        margin-bottom: 10px;
+    }
+    
+    .university-address {
+        font-size: 9px;
+        margin: 8px 0;
+        padding: 0 12px;
+        line-height: 1.5;
+    }
+    
+    .university-contact {
+        font-size: 8px;
+        margin: 6px 0;
+    }
+    
+    .content-wrapper {
+        padding: 0 14px 18px 14px;
+    }
+    
+    .floating-print-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 54px;
+        height: 54px;
+        font-size: 22px;
+        box-shadow: 0 4px 20px rgba(40, 167, 69, 0.4);
+    }
+    
+    .floating-print-btn:hover {
+        transform: scale(1.08) translateY(-2px);
+    }
+    
+    .grade-card-title {
+        font-size: 18px;
+        padding: 0 14px;
+        margin: 18px 0 14px 0;
+        font-weight: 700;
+    }
+    
+    .student-info-table {
+        font-size: 10px;
+        margin: 18px 0;
+    }
+    
+    .info-label {
+        font-size: 9px;
+        padding: 8px 6px;
+        width: 24%;
+    }
+    
+    .info-value {
+        font-size: 9px;
+        padding: 8px 6px;
+    }
+    
+    .course-table {
+        font-size: 10px;
+        margin: 18px 0;
+    }
+    
+    .course-table th {
+        font-size: 9px;
+        padding: 9px 5px;
+    }
+    
+    .course-table td {
+        font-size: 9px;
+        padding: 8px 5px;
+    }
+    
+    .course-table td:last-child {
+        font-size: 10px;
+        font-weight: 700;
+    }
+    
+    .summary-info-table {
+        margin: 18px 0;
+    }
+    
+    .summary-label {
+        font-size: 8px;
+        padding: 7px 4px;
+    }
+    
+    .summary-value {
+        font-size: 9px;
+        padding: 8px 4px;
+    }
+    
+    .date-section {
+        padding: 0 14px;
+        margin: 22px 0 18px 0;
+    }
+    
+    .date-section p {
+        font-size: 11px;
+    }
+    
+    .back-btn-section {
+        margin: 22px 0;
+        padding: 18px 0;
+    }
+    
+    .back-btn {
+        padding: 12px 24px;
+        font-size: 13px;
+        font-weight: 600;
+        box-shadow: 0 2px 8px rgba(108, 117, 125, 0.2);
+    }
+    
+    .back-btn:active {
+        transform: translateY(1px);
+    }
+    
+    .footer {
+        font-size: 11px;
+        padding: 12px;
+    }
+    
+    .copyright {
+        font-size: 11px;
+        margin-bottom: 15px;
+    }
+    
+    .developer-card {
+        padding: 15px;
+        border-radius: 12px;
+        margin: 15px auto 0;
+    }
+    
+    .developer-profile {
+        gap: 14px;
+    }
+    
+    .developer-photo {
+        width: 60px;
+        height: 60px;
+        border-width: 2px;
+        display: block;
+        flex-shrink: 0;
+    }
+    
+    .developer-name {
+        font-size: 16px;
+    }
+    
+    .developer-title {
+        font-size: 12px;
+    }
+    
+    .developer-tagline {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 480px) {
+    .top-bar {
+        font-size: 10px;
+        padding: 8px 0;
+    }
+    
+    .container-fluid {
+        padding: 0 8px;
+    }
+    
+    .contact-item {
+        font-size: 10px;
+    }
+    
+    .university-logo {
+        height: 42px;
+    }
+    
+    .hamburger-menu {
+        display: flex !important;
+        padding: 6px;
+    }
+    
+    .nav-link {
+        padding: 14px 18px !important;
+        font-size: 14px !important;
+    }
+    
+    .main-container {
+        padding: 12px 5px;
+    }
+    
+    .card-header {
+        padding: 18px 12px;
+    }
+    
+    .card-header h2 {
+        font-size: 17px;
+    }
+    
+    .session {
+        font-size: 11px;
+    }
+    
+    .search-section {
+        padding: 20px 12px;
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    .form-group label {
+        font-size: 13px;
+        margin-bottom: 7px;
+    }
+    
+    .form-group input {
+        padding: 12px 12px;
+        font-size: 13px;
+    }
+    
+    .btn-primary {
+        padding: 12px;
+        font-size: 14px;
+    }
+    
+    .info-text {
+        font-size: 11px;
+        margin-top: 12px;
+    }
+    
+    .result-section {
+        padding: 10px 5px;
+    }
+    
+    .card-header-section {
+        padding: 10px 0;
+        margin-bottom: 12px;
+    }
+    
+    .main-logo {
+        height: 70px;
+        margin-bottom: 6px;
+    }
+    
+    .university-address {
+        font-size: 8px;
+        margin: 5px 0;
+        padding: 0 8px;
+        line-height: 1.4;
+    }
+    
+    .university-contact {
+        font-size: 7px;
+        margin: 4px 0;
+    }
+    
+    .content-wrapper {
+        padding: 0 10px 12px 10px;
+    }
+    
+    .floating-print-btn {
+        bottom: 15px;
+        right: 15px;
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+    
+    .grade-card-title {
+        font-size: 16px;
+        margin: 12px 0 10px 0;
+        padding: 0 10px;
+    }
+    
+    .student-info-table {
+        margin: 12px 0;
+    }
+    
+    .info-label {
+        font-size: 8px;
+        padding: 6px 4px;
+        width: 24%;
+    }
+    
+    .info-value {
+        font-size: 8px;
+        padding: 6px 4px;
+    }
+    
+    .course-table {
+        margin: 12px 0;
+    }
+    
+    .course-table th {
+        font-size: 8px;
+        padding: 7px 3px;
+    }
+    
+    .course-table td {
+        font-size: 8px;
+        padding: 6px 3px;
+    }
+    
+    .course-table td:last-child {
+        font-size: 9px;
+    }
+    
+    .summary-info-table {
+        margin: 12px 0;
+    }
+    
+    .summary-label {
+        font-size: 7px;
+        padding: 5px 2px;
+    }
+    
+    .summary-value {
+        font-size: 8px;
+        padding: 6px 3px;
+    }
+    
+    .date-section {
+        padding: 0 10px;
+        margin: 15px 0 12px 0;
+    }
+    
+    .date-section p {
+        font-size: 10px;
+    }
+    
+    .back-btn-section {
+        margin: 15px 0;
+        padding: 12px 0;
+    }
+    
+    .back-btn {
+        padding: 10px 18px;
+        font-size: 12px;
+    }
+    
+    .developer-card {
+        padding: 10px;
+        border-radius: 8px;
+    }
+    
+    .developer-profile {
+        gap: 10px;
+    }
+    
+    .developer-photo {
+        width: 50px;
+        height: 50px;
+        display: block;
+        flex-shrink: 0;
+    }
+    
+    .developer-name {
+        font-size: 14px;
+    }
+    
+    .developer-title {
+        font-size: 10px;
+    }
+    
+    .developer-tagline {
+        font-size: 9px;
+    }
+}
+
+@media (max-width: 360px) {
+    .card-header h2 {
+        font-size: 15px;
+    }
+    
+    .session {
+        font-size: 10px;
+    }
+    
+    .nav-link {
+        font-size: 11px;
+        padding: 7px 8px;
+        min-width: 85px;
+    }
+    
+    .form-group input {
+        font-size: 12px;
+        padding: 11px 10px;
+    }
+    
+    .btn-primary {
+        font-size: 13px;
+        padding: 11px;
+    }
+    
+    .main-logo {
+        height: 60px;
+    }
+    
+    .university-address {
+        font-size: 7px;
+    }
+    
+    .university-contact {
+        font-size: 6px;
+    }
+    
+    .grade-card-title {
+        font-size: 14px;
+    }
+    
+    .info-label,
+    .info-value {
+        font-size: 7px;
+        padding: 5px 3px;
+    }
+    
+    .course-table th,
+    .course-table td {
+        font-size: 7px;
+        padding: 5px 2px;
+    }
+    
+    .course-table td:last-child {
+        font-size: 8px;
+    }
+    
+    .summary-label {
+        font-size: 6px;
+        padding: 4px 2px;
+    }
+    
+    .summary-value {
+        font-size: 7px;
+        padding: 5px 2px;
+    }
+    
+    .date-section p {
+        font-size: 9px;
+    }
+    
+    .back-btn {
+        font-size: 11px;
+        padding: 9px 15px;
+    }
+    
+    .floating-print-btn {
+        width: 46px;
+        height: 46px;
+        font-size: 18px;
+    }
+}

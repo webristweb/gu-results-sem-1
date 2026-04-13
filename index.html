@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galgotia University - Result Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container-fluid">
+            <div class="top-bar-left">
+                <span class="contact-item">
+                    <i class="icon-phone">📞</i> Call us - 9220407134, 9223407135, 9870221079
+                </span>
+                <span class="contact-item">
+                    <i class="icon-time">🕐</i> Reach us between 9 AM - 5 PM (Mon-Fri)
+                </span>
+                <span class="contact-item">
+                    <i class="icon-email">✉</i> E-mail: support.cdoe@galgotiasonline.edu.in
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <div class="header">
+        <div class="container-fluid">
+            <div class="header-wrapper">
+                <div class="logo-section">
+                    <img src="galgotias.png" alt="Galgotias University Logo" class="university-logo">
+                </div>
+                
+                <!-- Hamburger Menu Button (Mobile Only) -->
+                <button class="hamburger-menu" id="hamburgerBtn" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <!-- Navigation Menu -->
+                <nav class="main-nav" id="mainNav">
+                    <a href="https://mylms.galgotiasonline.com/?redirect=0" class="nav-link" target="_blank">Home</a>
+                    <a href="https://mylms.galgotiasonline.com/my/" class="nav-link" target="_blank">Dashboard</a>
+                    <a href="https://mylms.galgotiasonline.com/my/courses.php" class="nav-link" target="_blank">My Courses</a>
+                    <a href="#" class="nav-link">Results</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Menu Overlay for Mobile -->
+    <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+
+    <div class="main-container">
+        <div class="result-card">
+            <div class="card-header" id="cardHeader">
+                <h2>Examination Result - MCA 1st Semester</h2>
+                <p class="session">Academic Session: 2025-26</p>
+            </div>
+
+            <div class="search-section" id="searchSection">
+                <div class="form-group">
+                    <label for="rollNo">Enter Roll Number</label>
+                    <input type="text" id="rollNo" placeholder="Enter Your GU ID" maxlength="20">
+                </div>
+                <button onclick="checkResult()" class="btn-primary">View Result</button>
+                <p class="info-text">* Please enter your valid roll number to view result</p>
+            </div>
+
+            <div class="result-section" id="resultSection" style="display: none;">
+                <!-- Grade Card Container -->
+                <div class="grade-card">
+                    <!-- Header Section -->
+                    <div class="card-header-section">
+                        <div class="header-center">
+                            <img src="galgotias.png" alt="Galgotias University" class="main-logo">
+                            <p class="university-address">Plot No. 2, Sector-17A, Yamuna Expressway, Greater Noida, Gautam buddh Nagar, Uttar Pradesh, India - 203201</p>
+                            <p class="university-contact">0120-4806827, 0120-4806824 / https://www.galgotiasuniversity.edu.in</p>
+                        </div>
+                    </div>
+
+                    <div class="content-wrapper">
+                    <!-- Grade Card Title -->
+                    <h2 class="grade-card-title">Grade Card</h2>
+
+                    <!-- Student Information Table -->
+                    <table class="student-info-table">
+                        <tr>
+                            <td class="info-label">Student Name:</td>
+                            <td class="info-value" colspan="3" id="studentName"></td>
+                        </tr>
+                        <tr>
+                            <td class="info-label">Enrolment No:</td>
+                            <td class="info-value" id="displayRoll"></td>
+                            <td class="info-label">School Name:</td>
+                            <td class="info-value">School of Computing Science & Engineering</td>
+                        </tr>
+                        <tr>
+                            <td class="info-label">Program Name:</td>
+                            <td class="info-value">Master of Computer Applications</td>
+                            <td class="info-label">Term / Semester:</td>
+                            <td class="info-value">Sem I</td>
+                        </tr>
+                    </table>
+
+                    <!-- Course Details Table -->
+                    <table class="course-table">
+                        <thead>
+                            <tr>
+                                <th>Course Code</th>
+                                <th>Course Name</th>
+                                <th>Credit (Registered)</th>
+                                <th>Credit (Earned)</th>
+                                <th>Grade</th>
+                            </tr>
+                        </thead>
+                        <tbody id="courseTableBody">
+                        </tbody>
+                    </table>
+
+                    <!-- Summary Table -->
+                    <table class="summary-info-table">
+                        <tr>
+                            <td class="summary-label">Semester Grade Point Average (SGPA)</td>
+                            <td class="summary-label">Exam Registration (Credits)</td>
+                            <td class="summary-label">Earned Grade Points</td>
+                            <td class="summary-label">SGPA</td>
+                            <td class="summary-label">Cumulative Grade Point Average (CGPA)</td>
+                            <td class="summary-label">Cumulative Credits Earned</td>
+                            <td class="summary-label">Cumulative Earned Grade Points</td>
+                            <td class="summary-label">CGPA</td>
+                        </tr>
+                        <tr>
+                            <td class="summary-value" id="totalRegistered"></td>
+                            <td class="summary-value" id="earnedPoints"></td>
+                            <td class="summary-value" id="sgpaValue"></td>
+                            <td class="summary-value" id="cumulativeCredits"></td>
+                            <td class="summary-value" id="cumulativePoints"></td>
+                            <td class="summary-value" id="cgpaValue"></td>
+                        </tr>
+                    </table>
+
+                    <!-- Date -->
+                    <div class="date-section">
+                        <p>DATE: <span id="resultDate"></span></p>
+                    </div>
+
+                    <!-- Back Button -->
+                    <div class="back-btn-section">
+                        <button onclick="goBack()" class="back-btn">← Check Another Result</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-content">
+            <p class="copyright">&copy; 2026 Galgotia University. All Rights Reserved.</p>
+            
+            <!-- Developer Profile Card -->
+            <div class="developer-card">
+                <div class="developer-profile">
+                    <img src="abhi.png" alt="Abhishek Raj" class="developer-photo" onerror="this.style.display='none'">
+                    <div class="developer-info">
+                        <h3 class="developer-name">Abhishek Raj</h3>
+                        <p class="developer-title">Full Stack Developer</p>
+                        <p class="developer-tagline">Crafted with ❤️ and Code</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Floating Print Button -->
+    <button id="floatingPrintBtn" class="floating-print-btn" onclick="printResult()" title="Print / Download Result">
+        🖨️
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
